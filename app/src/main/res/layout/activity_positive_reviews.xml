@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#f5e9e7">
+
+    <!-- Back button -->
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/back"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Back"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp" />
+
+    <!-- Stars Icon -->
+
+    <!-- Submission confirmation text -->
+    <ImageView
+        android:id="@+id/iv_stars"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_back"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="114dp"
+        android:src="@drawable/postive" />
+
+    <TextView
+        android:id="@+id/tv_review_submitted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Review has been submitted successfully!"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/irish_grover"
+        android:layout_below="@id/iv_stars"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <!-- Sentiment analysis description -->
+    <TextView
+        android:id="@+id/tv_analysis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ah, magnifique! Your review captures the spirit of the film with an elegance that only true cinema lovers appreciate. With a confidence score of"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:fontFamily="@font/irish_grover"
+        android:layout_below="@id/tv_review_submitted"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <!-- Confidence score text with placeholder -->
+    <TextView
+        android:id="@+id/tv_confidence_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="--%"
+        android:textColor="#FFA500"
+        android:textSize="18sp"
+        android:fontFamily="@font/irish_grover"
+        android:layout_below="@id/tv_analysis"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp" />
+
+    <!-- Additional help message -->
+    <TextView
+        android:id="@+id/tv_additional_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your words become a guide, helping others find their next coup de cœur on the big screen!"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:fontFamily="@font/irish_grover"
+        android:layout_below="@id/tv_confidence_score"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+</RelativeLayout>
