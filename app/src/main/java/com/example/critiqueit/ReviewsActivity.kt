@@ -1,5 +1,6 @@
 package com.example.critiqueit
 
+import ReviewDatabaseHelper
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -18,6 +19,7 @@ class ReviewsActivity : AppCompatActivity() {
   private lateinit var tvEmptyMessageTitle: TextView
   private lateinit var tvEmptyMessageSubtitle: TextView
   private lateinit var fabAddReview: FloatingActionButton
+  private lateinit var databaseHelper: ReviewDatabaseHelper // Reference to the DatabaseHelper
 
   companion object {
     const val REQUEST_ADD_REVIEW = 1
@@ -34,15 +36,33 @@ class ReviewsActivity : AppCompatActivity() {
     tvEmptyMessageSubtitle = findViewById(R.id.tv_empty_message_subtitle)
     fabAddReview = findViewById(R.id.fab_add_review)
 
+    // Initialize DatabaseHelper
+    databaseHelper = ReviewDatabaseHelper(this)
+
     // Set up RecyclerView
     recyclerView.layoutManager = LinearLayoutManager(this)
     reviewAdapter = ReviewAdapter(mutableListOf())
     recyclerView.adapter = reviewAdapter
 
+    // Load existing reviews from the database
+    loadReviews()
+
     // Set click listener to add review
     fabAddReview.setOnClickListener {
       val intent = Intent(this, AddReviewActivity::class.java)
       startActivityForResult(intent, REQUEST_ADD_REVIEW)
+    }
+  }
+
+  private fun loadReviews() {
+    val reviews = databaseHelper.getAllReviews()
+    reviewAdapter.updateReviews(reviews) // Update the adapter with fetched reviews
+
+    // Check if the adapter is empty and update UI accordingly
+    if (reviewAdapter.itemCount == 0) {
+      showEmptyState()
+    } else {
+      showReviews()
     }
   }
 
@@ -56,6 +76,7 @@ class ReviewsActivity : AppCompatActivity() {
 
         // Create a new Review object
         val newReview = Review(
+          id = 0,
           summary = reviewText,
           sentiment = sentiment,
           confidence = confidence

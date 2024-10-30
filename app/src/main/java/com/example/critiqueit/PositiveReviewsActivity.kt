@@ -20,11 +20,13 @@ class PositiveReviewsActivity : AppCompatActivity() {
     tvReviewSubmitted = findViewById(R.id.tv_review_submitted)
     tvConfidenceScore = findViewById(R.id.tv_confidence_score)
 
-    // Get the review text and confidence score passed from AddReviewActivity
+    // Get the review text, sentiment, and confidence score passed from AddReviewActivity
+    val reviewText = intent.getStringExtra("REVIEW_TEXT") ?: ""
     val confidenceScore = intent.getDoubleExtra("CONFIDENCE_SCORE", 0.0)
 
-    // Display the confidence score
-    tvConfidenceScore.text = confidenceScore.toString() // Convert to String for display
+    // Display the review text and confidence score
+    tvReviewSubmitted.text = reviewText
+    tvConfidenceScore.text = confidenceScore.toString()
 
     btnBack.setOnClickListener {
       // Start ReviewsActivity and clear this activity from the back stack

@@ -19,10 +19,13 @@ class NegativeReviewsActivity : AppCompatActivity() {
         tvReviewSubmitted = findViewById(R.id.tv_review_submitted)
         tvConfidenceScore = findViewById(R.id.tv_confidence_score)
 
-        // Get the review text and confidence score passed from com.example.critiqueit.AddReviewActivity
-        val confidenceScore = intent.getStringExtra("CONFIDENCE_SCORE")
+        // Get the review text and confidence score passed from AddReviewActivity
+        val reviewText = intent.getStringExtra("REVIEW_TEXT") ?: ""
+        val confidenceScore = intent.getDoubleExtra("CONFIDENCE_SCORE", 0.0)
 
-        tvConfidenceScore.text = "$confidenceScore"
+        // Display the review text and confidence score
+        tvReviewSubmitted.text = reviewText
+        tvConfidenceScore.text = confidenceScore.toString()
 
         btnBack.setOnClickListener {
             // Start ReviewsActivity and clear this activity from the back stack
@@ -31,4 +34,5 @@ class NegativeReviewsActivity : AppCompatActivity() {
             startActivity(intent)
             finish() // Close this activity
         }
-}}
+    }
+}
