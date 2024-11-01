@@ -7,6 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <!-- res/values/colors.xml (Light Mode) -->
-    <color name="backgroundColor">#FFFFFF</color> <!-- Set to a light color -->
+    <!-- res/values-night/colors.xml (Dark Mode) -->
+    <color name="backgroundColor">#FFFFFFFF</color> <!-- Set to a consistent dark color or a slightly off-black shade -->
+
 </resources>

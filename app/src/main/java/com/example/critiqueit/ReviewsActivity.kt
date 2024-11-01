@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -28,7 +29,8 @@ class ReviewsActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_reviews)
-
+    val rootView = findViewById<View>(android.R.id.content) // Get the root view
+    rootView.setBackgroundColor(ContextCompat.getColor(this, R.color.backgroundColor))
     // Initialize views
     recyclerView = findViewById(R.id.recycler_view_reviews)
     ivEmptyState = findViewById(R.id.iv_empty_state)
